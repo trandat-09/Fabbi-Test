@@ -43,8 +43,6 @@ else if (($array[$i] > $max2) && ($array[$i] != $max))
     }
 }
 echo $max + $max_2;
-// Cả hai cách trên đều tương đối tốn dung lượng xử lý do điều kiện bài toán
-//tuy nhiên tôi vẫn chưa nghĩ ra cách tốt hơn để tối ưu
 
 
 //Bài 3
@@ -53,14 +51,24 @@ $n = count($array);
 $minDis = 0;
 for($i = 0; $i < $n; $i++){
     for($j = $i+1; $j < $n; $j++){
-        if($array[$j] - $array[$i] < $minDis){
-            $minDis = $array[$j] - $array[$i];//tìm khoảng cách nhỏ nhất
+        if(abs($array[$j] - $array[$i]) < $minDis){
+            $minDis = abs($array[$j] - $array[$i]);//tìm khoảng cách nhỏ nhất
         }
     }
 }
 
 ///duyệt mảng lần nữa để tìm các cặp thỏa mãn điều kiện
-// do điều kiện thời gian nên tôi chưa thể hoàn thành bài 3
 
+
+for($i = 0; $i < $n; $i++){
+    for($j = $i+1; $j < $n; $j++){
+        if(abs($array[$j] - $array[$i]) == $minDis){
+            echo $array[$i];
+            echo ', ';
+            echo $array[$j];
+            echo '<br>';
+        }
+    }
+}
 
 ?>
